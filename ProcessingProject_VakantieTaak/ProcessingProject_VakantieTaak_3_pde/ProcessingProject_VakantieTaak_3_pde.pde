@@ -21,6 +21,7 @@ void draw()
  }else if(gameState == "PlAY"){
    PlayGame();
  }else if(gameState == "END"){
+   delay(1000);
    EndGame();
    stop = 0.01745329252 ;
  }
@@ -31,7 +32,7 @@ void startGame()
   textAlign(CENTER);
   textSize(20);
   fill(255,0,0);
-  text("druk op een knop om de olympische ringen te maken", width/2, height/2);
+  text("druk op een knop om de olympische ring te zoeken", width/2, height/2);
   if (keyPressed==true)
   {
     gameState = "PlAY";
@@ -44,11 +45,10 @@ void PlayGame()
   if (mousePressed == State && mouseX>0 && mouseX<250 && mouseY>275 && mouseY<525) // Ik kies een situatie voor de variabele-versie omdat het meer flexiebeler is.
     {
       stop = compleet ;
+      gameState = "END";
+      
     }
-  if(stop >= 6.2831853072)
-        {
-          gameState = "END";
-        }
+
  stroke(0,0,250); //blauw
  arc(250,y,h,h,start,stop);
  stroke(0,0,0); //zwart
@@ -75,7 +75,7 @@ void EndGame()
   fill(250,250,250);
   textAlign(CENTER);
   textSize(20);
-  text("Klik om opnieuw te spelen.",width/2, height/2);
+  text("Klik in de vierkant om opnieuw te spelen.",width/2, height/2);
   rect(400,450,200,100,CENTER);
   if (mousePressed==true && mouseX>400 && mouseX<600 && mouseY>450 && mouseY<550)
   {
